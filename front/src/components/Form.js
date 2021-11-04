@@ -1,13 +1,16 @@
 import React from 'react';
+import './form.css';
 
 export default function Form() {
   return (
-    <form>
-      <label>
-        <input />
+    <form className="formLogin">
+      <label htmlFor="login" className="inputLogin">
+        Login
+        <input id="login" onChange={} />
       </label>
-      <label>
-        <input />
+      <label htmlFor="pass" className="inputLogin">
+        Senha
+        <input id="pass" onChange={} />
       </label>
     </form>
   )
