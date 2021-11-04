@@ -5,7 +5,7 @@ export default function Form() {
   const [login, setLogin] = useState('');
   const [pass, setPass] = useState('');
   return (
-    <form className="formLogin" onSubmit={() => ''}>
+    <form className="formLogin" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="login" className="inputLogin">
         Login
         <input
