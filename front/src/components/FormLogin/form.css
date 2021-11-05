@@ -4,3 +4,7 @@
   width: 200px;
   margin: 10px 20px;
 }
+
+.loginButton:disabled {
+  cursor: not-allowed;
+}
