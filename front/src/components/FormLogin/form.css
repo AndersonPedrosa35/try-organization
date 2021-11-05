@@ -1,0 +1,6 @@
+.inputLogin {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 10px 20px;
+}
