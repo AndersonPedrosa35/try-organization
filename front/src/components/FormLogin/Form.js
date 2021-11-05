@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './form.css';
 
@@ -6,12 +7,17 @@ import './form.css';
 export default function Form() {
   const [login, setLogin] = useState('');
   const [pass, setPass] = useState('');
+  const history = useHistory();
 
   async function dispatchLoginForModel(e) {
     e.preventDefault();
-    await api.post('/login', { email: login, senha: pass })
+    const request = await api.post('/login', { email: login, senha: pass })
       .then((response) => response.data)
-      .catch((err) => console.error(err.message));
+      .catch((err) => err);
+      console.log(request);
+    if (!request.message) {
+      history.push('/home');
+    }
   }
 
   return (
