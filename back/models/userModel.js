@@ -1,11 +1,20 @@
-const connect = require('./connection');
+const connection = require('./connection');
 
 const getLoginByEmail = async ({ email, senha }) => {
-  const data = await connect.then((db) => db.collection('users'));
+  const data = await connection().then((db) => db.collection('users'));
+  
+  const user = await data.find({ email, password: senha });
+  return user;
+}
 
-  return data.find({ email, password: senha });
+const createUser = async ({ email, senha }) => {
+  const data = await connection().then((db) => db.collection('users'));
+
+  const user = await data.insertOne({ email, password: senha });
+  return user;
 }
 
 module.exports = {
   getLoginByEmail,
+  createUser
 }

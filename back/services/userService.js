@@ -1,4 +1,4 @@
-const getLoginByEmail = require('../models/userModel');
+const userModel = require('../models/userModel');
 
 const isValidEmail = (email) => {
   if(!email || email === '') {
@@ -29,10 +29,25 @@ const getLoginByEmail = async ({ email, senha }) => {
   if (validPass.message) {
     return validPass;
   }
-  const user = await getLoginByEmail({ email, senha });
-  return true;
+  const user = await userModel.getLoginByEmail({ email, senha });
+  return user;
+}
+
+const createUser = async ({ email, senha }) => {
+  const validEmail = isValidEmail(email);
+  const validPass = isValidPass(senha);
+  if (validEmail.message) {
+    return validEmail;
+  }
+  if (validPass.message) {
+    return validPass;
+  }
+  console.log('Cheguei');
+  const user = await userModel.createUser({ email, senha })
+  return user;
 }
 
 module.exports = {
   getLoginByEmail,
+  createUser
 }

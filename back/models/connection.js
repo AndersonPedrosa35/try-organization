@@ -2,7 +2,7 @@ require('dotenv').config();
 const { MongoClient } = require("mongodb");
 const { DB_URL, DB_NAME } = process.env;
 
-let shema = null;
+let schema = null;
 
 async function connection() {
   if (schema) return Promise.resolve(schema);
