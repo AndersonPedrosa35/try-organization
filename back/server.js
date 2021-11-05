@@ -8,6 +8,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.post('/login');
  
 app.listen(PORT, () => {
   console.log(`Online na porta: ${PORT}`);

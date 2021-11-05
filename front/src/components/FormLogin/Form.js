@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import api from '../../services/api';
 import './form.css';
 
-function dispatchLoginForModel(e) {
-  e.preventDefault();
-  
-}
 
 export default function Form() {
   const [login, setLogin] = useState('');
   const [pass, setPass] = useState('');
+
+  async function dispatchLoginForModel(e) {
+    e.preventDefault();
+    await api.post('/login', { email: login, senha: pass })
+      .then((response) => response.data)
+      .catch((err) => console.error(err.message));
+  }
+
   return (
     <form className="formLogin" onSubmit={ dispatchLoginForModel }>
       <label htmlFor="login" className="inputLogin">
