@@ -1,23 +1,34 @@
-import React, { useState }  from 'react';
+import React, { useContext }  from 'react';
 import Header from '../components/Header/Header';
 import CreateTodo from '../components/CreateTodo';
 import RenderTodo from '../components/RenderTodo';
-import RemoverTodos from '../components/RemoverTodos';
+import { Context } from '../contexts/createContext';
+
+
+
 
 export default function Home() {
-  const [statusAdd, setStatusAdd] = useState(true);
+  const { objTodo, setObjTodo, listRemove, setListRemove } = useContext(Context);
+
+  function removeTarefas() {
+    let item = [];
+    listRemove.forEach((remove) => {
+      item = objTodo.filter(({ todo }) => todo !== remove)
+    })
+  }
+
   return (
     <div>
       <Header />
       <CreateTodo />
       <button 
         onClick={() => {
-          setStatusAdd(!statusAdd)
+          
         }}
         >
         Remover tarefa
       </button>
-        { statusAdd ? ( <RenderTodo />) : <RemoverTodos /> }
+      <RenderTodo />
     </div>
   )
 }
