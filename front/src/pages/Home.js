@@ -9,15 +9,15 @@ export default function Home() {
   return (
     <div>
       <Header />
-      { statusAdd ? <CreateTodo /> : <RemoverTodos /> }
+      <CreateTodo />
       <button 
         onClick={() => {
           setStatusAdd(!statusAdd)
         }}
-      >
+        >
         Remover tarefa
       </button>
-      <RenderTodo />
+        { statusAdd ? ( <RenderTodo />) : <RemoverTodos /> }
     </div>
   )
 }
