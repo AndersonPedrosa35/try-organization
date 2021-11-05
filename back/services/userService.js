@@ -42,7 +42,6 @@ const createUser = async ({ email, senha }) => {
   if (validPass.message) {
     return validPass;
   }
-  console.log('Cheguei');
   const { insertedId } = await userModel.createUser({ email, senha })
   return { _id: insertedId, email, senha };
 }

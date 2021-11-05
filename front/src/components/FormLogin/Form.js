@@ -14,7 +14,6 @@ export default function Form() {
     const request = await api.post('/login', { email: login, senha: pass })
       .then((response) => response.data)
       .catch((err) => err);
-      console.log(request);
     if (!request.message) {
       history.push('/home');
     }
