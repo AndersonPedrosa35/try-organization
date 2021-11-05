@@ -15,17 +15,20 @@ export default function Home() {
     listRemove.forEach((remove) => {
       item = objTodo.filter(({ todo }) => todo !== remove)
     })
+    if (listRemove.length > 0) {
+      setObjTodo(item);
+      setListRemove([]);
+    }
   }
 
   return (
     <div>
       <Header />
       <CreateTodo />
-      <button 
-        onClick={() => {
-          
-        }}
-        >
+      <button
+        type="button"
+        onClick={ removeTarefas }
+      >
         Remover tarefa
       </button>
       <RenderTodo />
