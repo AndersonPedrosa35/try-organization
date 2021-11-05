@@ -4,9 +4,6 @@ import CreateTodo from '../components/CreateTodo';
 import RenderTodo from '../components/RenderTodo';
 import { Context } from '../contexts/createContext';
 
-
-
-
 export default function Home() {
   const { objTodo, setObjTodo, listRemove, setListRemove } = useContext(Context);
 

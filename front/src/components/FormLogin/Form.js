@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import './form.css';
 
+function dispatchLoginForModel(e) {
+  e.preventDefault();
+  
+}
+
 export default function Form() {
   const [login, setLogin] = useState('');
   const [pass, setPass] = useState('');
   return (
-    <form className="formLogin" onSubmit={(e) => e.preventDefault()}>
+    <form className="formLogin" onSubmit={ dispatchLoginForModel }>
       <label htmlFor="login" className="inputLogin">
         Login
         <input
@@ -22,7 +27,7 @@ export default function Form() {
           onChange={({ target }) => setPass(target.value)} 
         />
       </label>
-      <button className="inputLogin"
+      <button className="inputLogin loginButton"
         disabled={
           !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(login)
           || pass.length <= 6
