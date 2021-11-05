@@ -43,8 +43,8 @@ const createUser = async ({ email, senha }) => {
     return validPass;
   }
   console.log('Cheguei');
-  const user = await userModel.createUser({ email, senha })
-  return user;
+  const { insertedId } = await userModel.createUser({ email, senha })
+  return { _id: insertedId, email, senha };
 }
 
 module.exports = {

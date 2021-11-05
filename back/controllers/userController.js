@@ -20,7 +20,7 @@ const createUser = async (req, res, next) => {
   if (validate.message) {
     return next(validate);
   }
-  return res.status(201).send('OK')
+  return res.status(201).send(validate);
 }
 
 module.exports = {
