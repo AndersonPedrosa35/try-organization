@@ -12,6 +12,7 @@ app.use(express.json());
 
 app.post('/create', userController.createUser);
 
+
 app.post('/login', userController.getLoginByEmail);
  
 app.listen(PORT, () => {

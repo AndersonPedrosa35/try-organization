@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import './form.css';
 
@@ -7,7 +7,7 @@ import './form.css';
 export default function Form() {
   const [login, setLogin] = useState('');
   const [pass, setPass] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   async function dispatchLoginForModel(e) {
     e.preventDefault();
@@ -15,7 +15,8 @@ export default function Form() {
       .then((response) => response.data)
       .catch((err) => err);
     if (!request.message) {
-      history.push('/home');
+      localStorage.setItem('login', JSON.stringify({ login }))
+      navigate("/home");
     }
   }
 
